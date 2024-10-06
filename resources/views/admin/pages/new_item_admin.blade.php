@@ -20,6 +20,11 @@
 </head>
 
 <body>
+    {{-- @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif --}}
 
 
     {{-- Navigation bar --}}
@@ -50,17 +55,19 @@
                                         </div>
                                     </div>
                                     <div class="card-body" id="formContainer">
-                                        <form action="">
+                                        <form action="{{ route('account_listings.store') }}" method="POST"
+                                            enctype="multipart/form-data">
+                                            @csrf
                                             <div id="accountForm" class="form-container">
                                                 <div style="margin: 10px">
                                                     <div class="form-group">
                                                         <label>Title | Account</label>
-                                                        <input class="form-control" name="item_name" placeholder="Name"
+                                                        <input class="form-control" name="title" placeholder="Name"
                                                             type="text">
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Item Description</label>
-                                                        <textarea rows="3" name="item_descript" class="form-control" placeholder="Description"></textarea>
+                                                        <textarea rows="3" name="description" class="form-control" placeholder="Description"></textarea>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-8">
@@ -68,28 +75,31 @@
                                                                 <div class="input-group-prepend">
                                                                     <span class="input-group-text">₱</span>
                                                                 </div>
-                                                                <input type="text" class="form-control"
+                                                                <input type="text" name="price"
+                                                                    class="form-control"
                                                                     aria-label="Amount (to the nearest dollar)">
                                                                 <div class="input-group-append">
                                                                     <span class="input-group-text">.00</span>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-4 position-relative">
                                                             <div class="input-group mb-3">
                                                                 <div class="custom-file">
-                                                                    <input type="file" class="custom-file-input"
-                                                                        id="imageUpload">
-                                                                    <label class="custom-file-label"
-                                                                        for="imageUpload">Choose Image</label>
+                                                                    <input type="file" class="custom-file-input" id="imageUpload" name="images[]" multiple accept="image/*" onchange="validateImages(this)">
+                                                                    <label class="custom-file-label" for="imageUpload">Choose Image (Up to 5)</label>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        
+                                                        
+                                                        
+
                                                     </div>
                                                     <div class="row row-sm mg-b-20">
                                                         <div class="col-lg-3 mg-t-20 mg-lg-t-0">
                                                             <p class="mg-b-10">Game</p>
-                                                            <select class="form-control select2">
+                                                            <select name="game" class="form-control select2">
                                                                 <option label="Choose one"></option>
                                                                 <option value="Valorant">Valorant</option>
                                                                 <option value="Roblox">Roblox</option>
@@ -99,7 +109,8 @@
                                                         </div>
                                                         <div class="col-lg-3">
                                                             <p class="mg-b-10">Use</p>
-                                                            <select class="form-control select2-no-search">
+                                                            <select name="usage"
+                                                                class="form-control select2-no-search">
                                                                 <option label="Choose one"></option>
                                                                 <option value="Good for Main">Good for Main</option>
                                                                 <option value="Good for Smurf">Good for Smurf</option>
@@ -107,7 +118,8 @@
                                                         </div>
                                                         <div class="col-lg-3">
                                                             <p class="mg-b-10">Type</p>
-                                                            <select class="form-control select2-no-search">
+                                                            <select name="type"
+                                                                class="form-control select2-no-search">
                                                                 <option label="Choose one"></option>
                                                                 <option value="Heavy spender | Whale">Heavy spender |
                                                                     Whale</option>
@@ -117,7 +129,8 @@
                                                         </div>
                                                         <div class="col-lg-3">
                                                             <p class="mg-b-10">Platform</p>
-                                                            <select class="form-control select2-no-search">
+                                                            <select name="platform"
+                                                                class="form-control select2-no-search">
                                                                 <option label="Choose one"></option>
                                                                 <option value="Desktop">Desktop</option>
                                                                 <option value="Mobile">Mobile</option>
@@ -125,9 +138,13 @@
                                                                     Cross-platform</option>
                                                             </select>
                                                         </div>
+                                                        
                                                     </div>
+                                                    <button type="submit" class="btn btn-az-primary">Create Listing</button>
                                                 </div>
                                             </div>
+
+                                            
                                         </form>
                                         <div id="itemForm" class="form-container" style="display: none;">
                                             <div style="margin: 10px">
@@ -197,7 +214,20 @@
     </div>
 
     </div><!-- az-content -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <script>
+        // Check if there's a success message in the session
+        @if (session('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: "{{ session('success') }}",
+                timer: 3000,
+                showConfirmButton: false,
+            });
+        @endif
+    </script>
 
     {{-- footer --}}
     @include('admin.layouts.footer_admin')
@@ -212,7 +242,23 @@
         });
     </script>
 
+  <script>
+    function validateImages(input) {
+    const fileCount = input.files.length;
+    const label = input.nextElementSibling; // Get the label element
 
+    // Validate the number of uploaded images
+    if (fileCount > 5) {
+        alert("You can only upload a maximum of 5 images.");
+        input.value = ''; // Clear the input
+        label.textContent = 'Choose Image (Up to 5)'; // Reset label text
+    } else {
+        // Change the label based on the number of uploaded images
+        label.textContent = `${fileCount} image${fileCount > 1 ? 's' : ''} uploaded`;
+    }
+}
+
+  </script>
 
 </body>
 

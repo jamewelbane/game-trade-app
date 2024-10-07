@@ -1,3 +1,6 @@
+ 
+ 
+ <link rel="icon" href="{{ asset('favicon.png') }}" type="image/png">
  <!-- vendor css -->
  <link href="{{ asset('../lib/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
  <link href="{{ asset('../lib/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
@@ -9,3 +12,8 @@
 
  {{-- custom style --}}
  <link rel="stylesheet" href="{{ asset('../css/custom.css') }}">
+
+
+ {{-- preloader --}}
+ <!-- l-quantum script -->
+<script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/quantum.js"></script>

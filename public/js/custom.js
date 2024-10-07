@@ -1,17 +1,14 @@
 // navigation active show
 function activateNavItem(pageClass) {
-   
     const navItem = document.querySelector(`.nav-item.${pageClass}`);
     const navLink = document.querySelector(`.nav-link.${pageClass}`);
-    
-    if (navItem) {
 
-        navItem.classList.add('active', 'show');
+    if (navItem) {
+        navItem.classList.add("active", "show");
     }
-    
+
     if (navLink) {
-    
-        navLink.classList.add('active', 'show');
+        navLink.classList.add("active", "show");
     }
 }
 
@@ -25,44 +22,45 @@ const Toast = Swal.mixin({
     didOpen: (toast) => {
         toast.onmouseenter = Swal.stopTimer;
         toast.onmouseleave = Swal.resumeTimer;
-    }
+    },
 });
 
-
 // add item sliding tab
-document.addEventListener('DOMContentLoaded', function() {
-    const toggleButton = document.getElementById('toggleButton');
-    const sellingType = document.getElementById('sellingType');
-    const accountForm = document.getElementById('accountForm');
-    const itemForm = document.getElementById('itemForm');
+document.addEventListener("DOMContentLoaded", function () {
+    const toggleButton = document.getElementById("toggleButton");
+    const sellingType = document.getElementById("sellingType");
+    const accountForm = document.getElementById("accountForm");
+    const itemForm = document.getElementById("itemForm");
 
-    toggleButton.addEventListener('click', function() {
-        const isAccountVisible = accountForm.style.display !== 'none';
+    toggleButton.addEventListener("click", function () {
+        const isAccountVisible = accountForm.style.display !== "none";
 
         // Change selling type text and button text
-        sellingType.innerText = isAccountVisible ? 'In-game Item' : 'Account';
-        toggleButton.innerText = isAccountVisible ? 'Switch to Account' : 'Switch to Item';
+        sellingType.innerText = isAccountVisible ? "In-game Item" : "Account";
+        toggleButton.innerText = isAccountVisible
+            ? "Switch to Account"
+            : "Switch to Item";
 
         // Animate sliding
         if (isAccountVisible) {
-            accountForm.classList.add('slide-out');
-            itemForm.classList.add('slide-in');
+            accountForm.classList.add("slide-out");
+            itemForm.classList.add("slide-in");
 
             setTimeout(() => {
-                accountForm.style.display = 'none';
-                itemForm.style.display = 'block';
-                accountForm.classList.remove('slide-out');
-                itemForm.classList.remove('slide-in');
+                accountForm.style.display = "none";
+                itemForm.style.display = "block";
+                accountForm.classList.remove("slide-out");
+                itemForm.classList.remove("slide-in");
             }, 500);
         } else {
-            itemForm.classList.add('slide-out');
-            accountForm.classList.add('slide-in');
+            itemForm.classList.add("slide-out");
+            accountForm.classList.add("slide-in");
 
             setTimeout(() => {
-                itemForm.style.display = 'none';
-                accountForm.style.display = 'block';
-                itemForm.classList.remove('slide-out');
-                accountForm.classList.remove('slide-in');
+                itemForm.style.display = "none";
+                accountForm.style.display = "block";
+                itemForm.classList.remove("slide-out");
+                accountForm.classList.remove("slide-in");
             }, 500);
         }
     });
@@ -70,16 +68,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // add item tab button
 
-document.addEventListener('DOMContentLoaded', function() {
-    const headerElement = document.querySelector('.az-content-header-right');
+document.addEventListener("DOMContentLoaded", function () {
+    const headerElement = document.querySelector(".az-content-header-right");
 
     function checkWidth() {
         if (window.innerWidth <= 991) {
-            headerElement.classList.remove('az-content-header-right');
-            headerElement.classList.add('az-content-header-left');
+            headerElement.classList.remove("az-content-header-right");
+            headerElement.classList.add("az-content-header-left");
         } else {
-            headerElement.classList.remove('az-content-header-left');
-            headerElement.classList.add('az-content-header-right');
+            headerElement.classList.remove("az-content-header-left");
+            headerElement.classList.add("az-content-header-right");
         }
     }
 
@@ -87,10 +85,8 @@ document.addEventListener('DOMContentLoaded', function() {
     checkWidth();
 
     // event listener for window resize
-    window.addEventListener('resize', checkWidth);
+    window.addEventListener("resize", checkWidth);
 });
-
-
 
 //-------- For new_item_admin.blade.php --------- //
 // js to handle upload image validation and functions
@@ -101,17 +97,19 @@ function validateImages(input) {
     const newFiles = Array.from(input.files); // Get newly selected files
     const totalFiles = selectedFiles.length;
 
-    const validImageTypes = ['image/jpeg', 'image/png', 'image/jpg']; // Valid image MIME types
+    const validImageTypes = ["image/jpeg", "image/png", "image/jpg"]; // Valid image MIME types
 
     // Filter out invalid files
-    const validFiles = newFiles.filter(file => validImageTypes.includes(file.type));
+    const validFiles = newFiles.filter((file) =>
+        validImageTypes.includes(file.type)
+    );
 
     // Check if valid files exceed the limit (5)
     if (totalFiles + validFiles.length > 5) {
         Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'You can only upload up to 5 images!',
+            icon: "error",
+            title: "Oops...",
+            text: "You can only upload up to 5 images!",
         });
         // Only keep the files that fit within the limit
         const filesToAdd = validFiles.slice(0, 5 - totalFiles);
@@ -123,54 +121,57 @@ function validateImages(input) {
 
     // Update the input field without clearing it
     const dataTransfer = new DataTransfer();
-    selectedFiles.forEach(file => dataTransfer.items.add(file)); // Add valid files to DataTransfer
+    selectedFiles.forEach((file) => dataTransfer.items.add(file)); // Add valid files to DataTransfer
     input.files = dataTransfer.files; // Update the input file list
 
     // Update the label to show the number of selected images
-    document.querySelector('.custom-file-label').textContent = `Selected ${selectedFiles.length} images`;
+    document.querySelector(
+        ".custom-file-label"
+    ).textContent = `Selected ${selectedFiles.length} images`;
 
     // Display images in the modal
     displayImagesInModal();
-    
+
     // If there were invalid files, notify the user
     if (validFiles.length !== newFiles.length) {
         Swal.fire({
-            icon: 'error',
-            title: 'Invalid File Type',
-            text: 'Only JPEG, JPG, and PNG files are allowed. Others are not supported!',
+            icon: "error",
+            title: "Invalid File Type",
+            text: "Only JPEG, JPG, and PNG files are allowed. Others are not supported!",
         });
     }
 }
 
-
 // Function to update the input field with the current files
 function updateInputField() {
     const dataTransfer = new DataTransfer();
-    selectedFiles.forEach(file => dataTransfer.items.add(file));
-    const inputField = document.getElementById('imageUploadAccount');
+    selectedFiles.forEach((file) => dataTransfer.items.add(file));
+    const inputField = document.getElementById("imageUploadAccount");
     inputField.files = dataTransfer.files; // Update the input field's files
 }
 
 // Function to display selected images in the modal
 function displayImagesInModal() {
-    const imagePreviewContainer = document.getElementById('imagePreviewContainer');
-    imagePreviewContainer.innerHTML = ''; // Clear previous content
+    const imagePreviewContainer = document.getElementById(
+        "imagePreviewContainer"
+    );
+    imagePreviewContainer.innerHTML = ""; // Clear previous content
 
     if (selectedFiles.length == 0) {
         Swal.fire({
-            icon: 'info',
-            title: 'No images selected',
-            text: 'Please select images to preview.',
+            icon: "info",
+            title: "No images selected",
+            text: "Please select images to preview.",
         });
         return;
     }
 
     selectedFiles.forEach((file, index) => {
         const reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             // Create image preview element
-            const imageElement = document.createElement('div');
-            imageElement.classList.add('col-md-4', 'mb-3');
+            const imageElement = document.createElement("div");
+            imageElement.classList.add("col-md-4", "mb-3");
             imageElement.innerHTML = `
         <div class="card">
             <img src="${e.target.result}" class="card-img-top" alt="Image Preview">
@@ -189,10 +190,11 @@ function displayImagesInModal() {
 function removeImage(index) {
     selectedFiles.splice(index, 1); // Remove the file from the array
     updateInputField(); // Update the file input with the current selected files
-    document.querySelector('.custom-file-label').textContent = `Selected ${selectedFiles.length} images`;
+    document.querySelector(
+        ".custom-file-label"
+    ).textContent = `Selected ${selectedFiles.length} images`;
     displayImagesInModal(); // Update the preview
 }
-
 
 // validatate item
 let selectedFileItem = null;
@@ -200,19 +202,21 @@ let selectedFileItem = null;
 // Function to validate image for the item listing (only one image allowed)
 function validateImageItem(input) {
     const file = input.files[0];
-    const validImageTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+    const validImageTypes = ["image/jpeg", "image/png", "image/jpg"];
 
-    const label = document.querySelector('.custom-file-label[for="imageUploadItem"]');
+    const label = document.querySelector(
+        '.custom-file-label[for="imageUploadItem"]'
+    );
 
     // Check if the file is a valid image type
     if (file) {
         if (!validImageTypes.includes(file.type)) {
             Swal.fire({
-                icon: 'error',
-                title: 'Invalid File Type',
-                text: 'Only JPEG, JPG, and PNG files are allowed. Others are not supported!',
+                icon: "error",
+                title: "Invalid File Type",
+                text: "Only JPEG, JPG, and PNG files are allowed. Others are not supported!",
             });
-            input.value = ''; // Reset the input
+            input.value = ""; // Reset the input
             selectedFileItem = null; // Clear the selected file
             updatePlaceholderItem(label); // Update the placeholder
             clearImagePreviewItem(); // Clear the image preview
@@ -235,28 +239,34 @@ function validateImageItem(input) {
 
 // Function to update the placeholder text for item image input
 function updatePlaceholderItem(label) {
-    label.textContent = selectedFileItem ? selectedFileItem.name : 'Choose Image (Only 1)';
+    label.textContent = selectedFileItem
+        ? selectedFileItem.name
+        : "Choose Image (Only 1)";
 }
 
 // Function to clear the image preview for item image input
 function clearImagePreviewItem() {
-    const imagePreviewContainer = document.getElementById('imagePreviewContainerItem');
-    imagePreviewContainer.innerHTML = ''; // Clear previous content
+    const imagePreviewContainer = document.getElementById(
+        "imagePreviewContainerItem"
+    );
+    imagePreviewContainer.innerHTML = ""; // Clear previous content
 }
 
 // Function to display selected image in the modal for item image input
 function displayImageInModalItem() {
-    const imagePreviewContainer = document.getElementById('imagePreviewContainerItem');
-    imagePreviewContainer.innerHTML = ''; // Clear previous content
+    const imagePreviewContainer = document.getElementById(
+        "imagePreviewContainerItem"
+    );
+    imagePreviewContainer.innerHTML = ""; // Clear previous content
 
     if (!selectedFileItem) {
         return;
     }
 
     const reader = new FileReader();
-    reader.onload = function(e) {
-        const imageElement = document.createElement('div');
-        imageElement.classList.add('col-md-12', 'mb-3');
+    reader.onload = function (e) {
+        const imageElement = document.createElement("div");
+        imageElement.classList.add("col-md-12", "mb-3");
         imageElement.innerHTML = `
             <div class="card">
                 <img src="${e.target.result}" class="card-img-top" alt="Image Preview">
@@ -268,7 +278,29 @@ function displayImageInModalItem() {
 }
 // validatate item end
 
+// Preloader script
+window.addEventListener("DOMContentLoaded", function () {
+    var preloader = document.getElementById("preloader");
 
+    // Immediately disable scrolling
+    document.body.classList.add("loading");
+    document.documentElement.classList.add("loading");
 
+    // Show preloader
+    preloader.style.opacity = "1";
+});
 
+window.addEventListener("load", function () {
+    var preloader = document.getElementById("preloader");
 
+    setTimeout(function () {
+        preloader.style.opacity = "0";
+        setTimeout(function () {
+            preloader.style.display = "none";
+
+            // Re-enable scrolling
+            document.body.classList.remove("loading");
+            document.documentElement.classList.remove("loading");
+        }, 500);
+    }, 500);
+});

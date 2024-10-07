@@ -20,12 +20,12 @@
 </head>
 
 <body>
-    {{-- @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif --}}
 
+    {{-- @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif --}}
 
     {{-- Navigation bar --}}
     @include('admin.components.nav_admin')
@@ -36,9 +36,11 @@
                 <div class="row row-sm mg-b-20">
                     <div class="col-lg-12 mg-t-20 mg-lg-t-0">
                         <div class="row row-sm">
+
                             <div class="col-sm-12 mg-t-20">
                                 <div class="card card-dashboard-one">
                                     <div class="card-header">
+
                                         <div>
                                             <h6 class="card-title">New Listing</h6>
                                             <p class="card-text">Please note that only images with up to 2MB are allowed
@@ -86,14 +88,29 @@
                                                         <div class="col-md-4 position-relative">
                                                             <div class="input-group mb-3">
                                                                 <div class="custom-file">
-                                                                    <input type="file" class="custom-file-input" id="imageUpload" name="images[]" multiple accept="image/*" onchange="validateImages(this)">
-                                                                    <label class="custom-file-label" for="imageUpload">Choose Image (Up to 5)</label>
+                                                                    <input type="file" class="custom-file-input"
+                                                                        id="imageUpload" name="images[]" multiple
+                                                                        accept="image/*"
+                                                                        onchange="validateImages(this)">
+                                                                    <label class="custom-file-label"
+                                                                        for="imageUpload">Choose Image (Up to 5)</label>
                                                                 </div>
+
+                                                                <div class="input-group-append">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        id="previewBtn" data-toggle="modal"
+                                                                        data-target="#previewModal"
+                                                                        style="height: 50%;">
+                                                                        <i class="fa fa-eye"></i>
+                                                                    </button>
+                                                                </div>
+
+                                                                <!-- Hidden input to hold the selected files for backend processing -->
+                                                                <input type="hidden" id="selectedFilesInput"
+                                                                    name="selectedFiles[]" multiple>
                                                             </div>
                                                         </div>
-                                                        
-                                                        
-                                                        
+
 
                                                     </div>
                                                     <div class="row row-sm mg-b-20">
@@ -138,13 +155,14 @@
                                                                     Cross-platform</option>
                                                             </select>
                                                         </div>
-                                                        
+
                                                     </div>
-                                                    <button type="submit" class="btn btn-az-primary">Create Listing</button>
+                                                    <button type="submit" class="btn btn-az-primary">Create
+                                                        Listing</button>
                                                 </div>
                                             </div>
 
-                                            
+
                                         </form>
                                         <div id="itemForm" class="form-container" style="display: none;">
                                             <div style="margin: 10px">
@@ -216,24 +234,25 @@
     </div><!-- az-content -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script>
-        // Check if there's a success message in the session
-        @if (session('success'))
-            Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: "{{ session('success') }}",
-                timer: 3000,
-                showConfirmButton: false,
-            });
-        @endif
-    </script>
+
 
     {{-- footer --}}
     @include('admin.layouts.footer_admin')
 
     {{-- js include --}}
     @include('admin.components.js_inc_admin')
+
+    {{-- Modal include --}}
+    @include('admin.components.modals_admin')
+
+    <script> 
+        @if (session('success'))
+            Toast.fire({
+                icon: "success",
+                title: "{{ session('success') }}"
+            });
+        @endif
+    </script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -242,23 +261,6 @@
         });
     </script>
 
-  <script>
-    function validateImages(input) {
-    const fileCount = input.files.length;
-    const label = input.nextElementSibling; // Get the label element
-
-    // Validate the number of uploaded images
-    if (fileCount > 5) {
-        alert("You can only upload a maximum of 5 images.");
-        input.value = ''; // Clear the input
-        label.textContent = 'Choose Image (Up to 5)'; // Reset label text
-    } else {
-        // Change the label based on the number of uploaded images
-        label.textContent = `${fileCount} image${fileCount > 1 ? 's' : ''} uploaded`;
-    }
-}
-
-  </script>
 
 </body>
 

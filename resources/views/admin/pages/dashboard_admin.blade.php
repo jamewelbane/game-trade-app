@@ -21,7 +21,7 @@
     <meta name="description" content="Responsive Bootstrap 4 Dashboard Template">
     <meta name="author" content="BootstrapDash">
 
-    <title>Azia Responsive Bootstrap 4 Dashboard Template</title>
+    <title>GameTrade | Dashboard</title>
 
     <!-- vendor css -->
     <link href="{{ asset('../lib/fontawesome-free/css/all.min.css') }}" rel="stylesheet">

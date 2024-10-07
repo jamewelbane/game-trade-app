@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\AccountListingImage;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class AccountListing extends Model
 {
@@ -24,7 +25,7 @@ class AccountListing extends Model
    // AccountListing.php
 public function images()
 {
-    return $this->hasMany(ListingImage::class, 'listing_id'); // Correctly reference 'listing_id'
+    return $this->hasMany(AccountListingImage::class, 'listing_id'); // Correctly reference 'listing_id'
 }
 
 

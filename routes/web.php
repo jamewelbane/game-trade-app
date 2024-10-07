@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ItemListingController;
 use App\Http\Controllers\AccountListingController;
 
 Route::get('/dashboard', function () {
@@ -19,4 +20,8 @@ Route::get('/', function () {
 
 Route::post('/account-listings', [AccountListingController::class, 'store'])->name('account_listings.store');
 Route::resource('account_listings', AccountListingController::class);
+
+Route::post('/item-listings', [ItemListingController::class, 'store'])->name('item_listings.store');
+Route::resource('item_listings', ItemListingController::class);
+
 

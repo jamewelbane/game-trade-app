@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // js to handle upload image validation and functions
 let selectedFiles = [];
 
-// Function to validate images and prevent GIFs
+// Function to validate images for account listing
 function validateImages(input) {
     const newFiles = Array.from(input.files); // Get newly selected files
     const totalFiles = selectedFiles.length;
@@ -147,7 +147,7 @@ function validateImages(input) {
 function updateInputField() {
     const dataTransfer = new DataTransfer();
     selectedFiles.forEach(file => dataTransfer.items.add(file));
-    const inputField = document.getElementById('imageUpload');
+    const inputField = document.getElementById('imageUploadAccount');
     inputField.files = dataTransfer.files; // Update the input field's files
 }
 
@@ -192,5 +192,83 @@ function removeImage(index) {
     document.querySelector('.custom-file-label').textContent = `Selected ${selectedFiles.length} images`;
     displayImagesInModal(); // Update the preview
 }
+
+
+// validatate item
+let selectedFileItem = null;
+
+// Function to validate image for the item listing (only one image allowed)
+function validateImageItem(input) {
+    const file = input.files[0];
+    const validImageTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+
+    const label = document.querySelector('.custom-file-label[for="imageUploadItem"]');
+
+    // Check if the file is a valid image type
+    if (file) {
+        if (!validImageTypes.includes(file.type)) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Invalid File Type',
+                text: 'Only JPEG, JPG, and PNG files are allowed. Others are not supported!',
+            });
+            input.value = ''; // Reset the input
+            selectedFileItem = null; // Clear the selected file
+            updatePlaceholderItem(label); // Update the placeholder
+            clearImagePreviewItem(); // Clear the image preview
+            return;
+        }
+
+        // Store the valid image
+        selectedFileItem = file;
+        label.textContent = file.name; // Update the label
+
+        // Display the image in the preview modal
+        displayImageInModalItem();
+    } else {
+        // No file selected, reset the preview and label
+        selectedFileItem = null; // Clear the selected file
+        updatePlaceholderItem(label); // Update the placeholder
+        clearImagePreviewItem(); // Clear the image preview
+    }
+}
+
+// Function to update the placeholder text for item image input
+function updatePlaceholderItem(label) {
+    label.textContent = selectedFileItem ? selectedFileItem.name : 'Choose Image (Only 1)';
+}
+
+// Function to clear the image preview for item image input
+function clearImagePreviewItem() {
+    const imagePreviewContainer = document.getElementById('imagePreviewContainerItem');
+    imagePreviewContainer.innerHTML = ''; // Clear previous content
+}
+
+// Function to display selected image in the modal for item image input
+function displayImageInModalItem() {
+    const imagePreviewContainer = document.getElementById('imagePreviewContainerItem');
+    imagePreviewContainer.innerHTML = ''; // Clear previous content
+
+    if (!selectedFileItem) {
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const imageElement = document.createElement('div');
+        imageElement.classList.add('col-md-12', 'mb-3');
+        imageElement.innerHTML = `
+            <div class="card">
+                <img src="${e.target.result}" class="card-img-top" alt="Image Preview">
+            </div>
+        `;
+        imagePreviewContainer.appendChild(imageElement);
+    };
+    reader.readAsDataURL(selectedFileItem); // Convert file to base64 string for preview
+}
+// validatate item end
+
+
+
 
 

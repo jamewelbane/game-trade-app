@@ -11,6 +11,10 @@ Route::get('/dashboard', function () {
 Route::get('/add-item', function () {
     return view('admin.pages.new_item_admin');
 });
+
+Route::get('/mystore', function () {
+    return view('admin.pages.mystore_admin');
+});
  
 
 Route::get('/', function () {

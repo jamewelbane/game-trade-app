@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const isAccountVisible = accountForm.style.display !== "none";
 
         // Change selling type text and button text
-        sellingType.innerText = isAccountVisible ? "In-game Item" : "Account";
+        sellingType.innerText = isAccountVisible ? "In-game item" : "Account";
         toggleButton.innerText = isAccountVisible
             ? "Switch to Account"
             : "Switch to Item";
@@ -278,29 +278,49 @@ function displayImageInModalItem() {
 }
 // validatate item end
 
-// Preloader script
-window.addEventListener("DOMContentLoaded", function () {
-    var preloader = document.getElementById("preloader");
+// Preloader 1 script
+// window.addEventListener("DOMContentLoaded", function () {
+//     var preloader = document.getElementById("preloader");
 
-    // Immediately disable scrolling
-    document.body.classList.add("loading");
-    document.documentElement.classList.add("loading");
+//     // Immediately disable scrolling
+//     document.body.classList.add("loading");
+//     document.documentElement.classList.add("loading");
 
-    // Show preloader
-    preloader.style.opacity = "1";
-});
+//     // Show preloader
+//     preloader.style.opacity = "1";
+// });
 
-window.addEventListener("load", function () {
-    var preloader = document.getElementById("preloader");
+// window.addEventListener("load", function () {
+//     var preloader = document.getElementById("preloader");
 
-    setTimeout(function () {
-        preloader.style.opacity = "0";
-        setTimeout(function () {
-            preloader.style.display = "none";
+//     setTimeout(function () {
+//         preloader.style.opacity = "0";
+//         setTimeout(function () {
+//             preloader.style.display = "none";
 
-            // Re-enable scrolling
-            document.body.classList.remove("loading");
-            document.documentElement.classList.remove("loading");
-        }, 500);
-    }, 500);
-});
+//             // Re-enable scrolling
+//             document.body.classList.remove("loading");
+//             document.documentElement.classList.remove("loading");
+//         }, 500);
+//     }, 500);
+// });
+
+
+// preloader 2
+  // Disable scroll while preloader is active
+  document.body.classList.add("preloader-active");
+
+//   Hide preloader after page load
+  window.addEventListener("load", function() {
+    const preloader = document.getElementById("preloader");
+
+
+    setTimeout(function() {
+      preloader.classList.add("hidden"); // Start fade out
+
+      setTimeout(function() {
+        preloader.style.display = "none"; // Hide preloader
+        document.body.classList.remove("preloader-active"); // Enable scroll
+      }, 500); 
+    }, 1000);
+  });

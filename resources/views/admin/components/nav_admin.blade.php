@@ -16,21 +16,22 @@
                 <li class="nav-item sell">
                     <a href="" class="nav-link with-sub"><i class="fas fa-tags"></i>&nbsp Sell</a>
                     <nav class="az-menu-sub">
-                        <a href="/add-item" class="nav-link add-listing">Add listing</a>
-                        <a href="page-signup.html" class="nav-link">Inventory</a>
+                        <a href="/add-item" class="nav-link add-listing">Account & Item</a>
+                        <a href="/add-item" class="nav-link add-listing">Services</a>
+                        
                     </nav>
                 </li>
 
                 <li class="nav-item transaction">
-                    <a href="" class="nav-link with-sub"><i class="fas fa-file-invoice-dollar"></i>&nbsp Transaction</a>
+                    <a href="" class="nav-link with-sub"><i class="fas fa-hand-holding-usd"></i>&nbsp Transaction</a>
                     <nav class="az-menu-sub">
                         <a href="page-signup.html" class="nav-link">Pending</a>
                         <a href="page-signup.html" class="nav-link">Completed</a>
                     </nav>
                 </li>
 
-                <li class="nav-item">
-                    <a href="/" class="nav-link"><i class="fas fa-store"></i>&nbsp Store</a>
+                <li class="nav-item mystore">
+                    <a href="/mystore" class="nav-link"><i class="fas fa-store"></i>&nbsp MyStore</a>
                 </li>
 
 

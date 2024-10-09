@@ -133,7 +133,12 @@
 
 <body>
 
-
+    @php
+    // Encrypt the string you want to use in the URL
+    $urlAccountList = Crypt::encrypt('accounts');
+    $urlItemsList = Crypt::encrypt('items-coins');
+    $urlServicesList = Crypt::encrypt('services');
+    @endphp
 
     {{-- Navigation bar --}}
     @include('admin.components.nav_admin')
@@ -160,10 +165,11 @@
                             </section>
 
                             <div class="container-inventory-selection">
-                                <div class="card">
+                                <div class="card" onclick="window.location.href='/mystore/{{ $urlAccountList }}'">
                                     <div class="icon">👤</div>
                                     <h3>Accounts</h3>
                                 </div>
+
                                 <div class="card">
                                     <div class="icon">📦</div>
                                     <h3>Items & Coins</h3>

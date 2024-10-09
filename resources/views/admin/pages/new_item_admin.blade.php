@@ -34,8 +34,6 @@
             <div class="loading-bar"></div>
         </div>
     </div>
-
-    
 @endif
 
 
@@ -77,10 +75,10 @@
                                     <div class="card-body" id="formContainer">
 
                                         {{-- Account listing form --}}
-                                        @include('admin.pages.forms.account_listing_admin')
+                                        @include('admin.pages.forms.account_listing_form')
 
                                         {{-- Item listing form --}}
-                                        @include('admin.pages.forms.item_listing_admin')
+                                        @include('admin.pages.forms.item_listing_form')
 
                                     </div><!-- card-body -->
                                 </div><!-- card -->
@@ -93,8 +91,6 @@
     </div>
 
     </div><!-- az-content -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 
 
     {{-- footer --}}

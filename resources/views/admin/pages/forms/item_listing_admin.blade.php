@@ -83,15 +83,16 @@
                     <select name="type" class="form-control select2-no-search @error('type') is-invalid @enderror"
                         required>
                         <option label="Choose one"></option>
-                        <option value="In-game item">In-game item</option>
-                        <option value="In-game currency">In-game currency</option>
+                        <option value="In-game item">Item</option>
+                        <option value="In-game currency">Coins | Currency</option>
+                        
                     </select>
                     @error('type')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-az-primary">Create Listing</button>
         </div>
     </div>
 </form>

@@ -32,61 +32,69 @@ document.addEventListener("DOMContentLoaded", function () {
     const accountForm = document.getElementById("accountForm");
     const itemForm = document.getElementById("itemForm");
 
-    toggleButton.addEventListener("click", function () {
-        const isAccountVisible = accountForm.style.display !== "none";
+    // Check if all required elements exist before proceeding
+    if (toggleButton && sellingType && accountForm && itemForm) {
+        toggleButton.addEventListener("click", function () {
+            const isAccountVisible = accountForm.style.display !== "none";
 
-        // Change selling type text and button text
-        sellingType.innerText = isAccountVisible ? "In-game Item" : "Account";
-        toggleButton.innerText = isAccountVisible
-            ? "Switch to Account"
-            : "Switch to Item";
+            // Change selling type text and button text
+            sellingType.innerText = isAccountVisible ? "In-game item" : "Account";
+            toggleButton.innerText = isAccountVisible
+                ? "Switch to Account"
+                : "Switch to Item";
 
-        // Animate sliding
-        if (isAccountVisible) {
-            accountForm.classList.add("slide-out");
-            itemForm.classList.add("slide-in");
+            // Animate sliding
+            if (isAccountVisible) {
+                accountForm.classList.add("slide-out");
+                itemForm.classList.add("slide-in");
 
-            setTimeout(() => {
-                accountForm.style.display = "none";
-                itemForm.style.display = "block";
-                accountForm.classList.remove("slide-out");
-                itemForm.classList.remove("slide-in");
-            }, 500);
-        } else {
-            itemForm.classList.add("slide-out");
-            accountForm.classList.add("slide-in");
+                setTimeout(() => {
+                    accountForm.style.display = "none";
+                    itemForm.style.display = "block";
+                    accountForm.classList.remove("slide-out");
+                    itemForm.classList.remove("slide-in");
+                }, 500);
+            } else {
+                itemForm.classList.add("slide-out");
+                accountForm.classList.add("slide-in");
 
-            setTimeout(() => {
-                itemForm.style.display = "none";
-                accountForm.style.display = "block";
-                itemForm.classList.remove("slide-out");
-                accountForm.classList.remove("slide-in");
-            }, 500);
-        }
-    });
+                setTimeout(() => {
+                    itemForm.style.display = "none";
+                    accountForm.style.display = "block";
+                    itemForm.classList.remove("slide-out");
+                    accountForm.classList.remove("slide-in");
+                }, 500);
+            }
+        });
+    }
 });
+
 
 // add item tab button
 
 document.addEventListener("DOMContentLoaded", function () {
     const headerElement = document.querySelector(".az-content-header-right");
 
-    function checkWidth() {
-        if (window.innerWidth <= 991) {
-            headerElement.classList.remove("az-content-header-right");
-            headerElement.classList.add("az-content-header-left");
-        } else {
-            headerElement.classList.remove("az-content-header-left");
-            headerElement.classList.add("az-content-header-right");
+    // Check if the headerElement exists before proceeding
+    if (headerElement) {
+        function checkWidth() {
+            if (window.innerWidth <= 991) {
+                headerElement.classList.remove("az-content-header-right");
+                headerElement.classList.add("az-content-header-left");
+            } else {
+                headerElement.classList.remove("az-content-header-left");
+                headerElement.classList.add("az-content-header-right");
+            }
         }
+
+        // Run on initial load
+        checkWidth();
+
+        // Event listener for window resize
+        window.addEventListener("resize", checkWidth);
     }
-
-    // Run on initial load
-    checkWidth();
-
-    // event listener for window resize
-    window.addEventListener("resize", checkWidth);
 });
+
 
 //-------- For new_item_admin.blade.php --------- //
 // js to handle upload image validation and functions
@@ -278,29 +286,49 @@ function displayImageInModalItem() {
 }
 // validatate item end
 
-// Preloader script
-window.addEventListener("DOMContentLoaded", function () {
-    var preloader = document.getElementById("preloader");
+// Preloader 1 script
+// window.addEventListener("DOMContentLoaded", function () {
+//     var preloader = document.getElementById("preloader");
 
-    // Immediately disable scrolling
-    document.body.classList.add("loading");
-    document.documentElement.classList.add("loading");
+//     // Immediately disable scrolling
+//     document.body.classList.add("loading");
+//     document.documentElement.classList.add("loading");
 
-    // Show preloader
-    preloader.style.opacity = "1";
-});
+//     // Show preloader
+//     preloader.style.opacity = "1";
+// });
 
-window.addEventListener("load", function () {
-    var preloader = document.getElementById("preloader");
+// window.addEventListener("load", function () {
+//     var preloader = document.getElementById("preloader");
 
-    setTimeout(function () {
-        preloader.style.opacity = "0";
+//     setTimeout(function () {
+//         preloader.style.opacity = "0";
+//         setTimeout(function () {
+//             preloader.style.display = "none";
+
+//             // Re-enable scrolling
+//             document.body.classList.remove("loading");
+//             document.documentElement.classList.remove("loading");
+//         }, 500);
+//     }, 500);
+// });
+
+// preloader 2
+//   Disable scroll while preloader is active
+
+const preloader = document.getElementById("preloader");
+if (preloader) {
+    document.body.classList.add("preloader-active");
+
+    // Hide preloader after page load
+    window.addEventListener("load", function () {
         setTimeout(function () {
-            preloader.style.display = "none";
+            preloader.classList.add("hidden"); // Start fade out
 
-            // Re-enable scrolling
-            document.body.classList.remove("loading");
-            document.documentElement.classList.remove("loading");
-        }, 500);
-    }, 500);
-});
+            setTimeout(function () {
+                preloader.style.display = "none"; // Hide preloader
+                document.body.classList.remove("preloader-active"); // Enable scroll
+            }, 500);
+        }, 1000);
+    });
+}

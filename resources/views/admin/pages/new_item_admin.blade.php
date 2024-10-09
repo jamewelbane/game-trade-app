@@ -21,20 +21,21 @@
 
 
 @if (session('success'))
- 
 @else
     <!-- Preloader overlay -->
-    {{-- <div class="overlay" id="preloader">
+    {{-- <div class="overlay" id="preloader"> 
         <l-quantum size="100" speed="1.75" color="#3366ff"></l-quantum>
     </div> --}}
     <div id="preloader">
         <div class="loading-wave">
-          <div class="loading-bar"></div>
-          <div class="loading-bar"></div>
-          <div class="loading-bar"></div>
-          <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
         </div>
-      </div>
+    </div>
+
+    
 @endif
 
 

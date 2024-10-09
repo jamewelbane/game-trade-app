@@ -1,5 +1,6 @@
  
  
+ 
  <link rel="icon" href="{{ asset('favicon.png') }}" type="image/png">
  <!-- vendor css -->
  <link href="{{ asset('../lib/fontawesome-free/css/all.min.css') }}" rel="stylesheet">

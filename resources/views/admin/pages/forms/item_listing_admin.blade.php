@@ -85,7 +85,7 @@
                         <option label="Choose one"></option>
                         <option value="In-game item">Item</option>
                         <option value="In-game currency">Coins | Currency</option>
-                        
+
                     </select>
                     @error('type')
                         <div class="invalid-feedback">{{ $message }}</div>

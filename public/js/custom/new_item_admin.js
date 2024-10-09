@@ -1,101 +1,3 @@
-// navigation active show
-function activateNavItem(pageClass) {
-    const navItem = document.querySelector(`.nav-item.${pageClass}`);
-    const navLink = document.querySelector(`.nav-link.${pageClass}`);
-
-    if (navItem) {
-        navItem.classList.add("active", "show");
-    }
-
-    if (navLink) {
-        navLink.classList.add("active", "show");
-    }
-}
-
-// ------ Sweetalert ------ //
-const Toast = Swal.mixin({
-    toast: true,
-    position: "top-end",
-    showConfirmButton: false,
-    timer: 5000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-        toast.onmouseenter = Swal.stopTimer;
-        toast.onmouseleave = Swal.resumeTimer;
-    },
-});
-
-// add item sliding tab
-document.addEventListener("DOMContentLoaded", function () {
-    const toggleButton = document.getElementById("toggleButton");
-    const sellingType = document.getElementById("sellingType");
-    const accountForm = document.getElementById("accountForm");
-    const itemForm = document.getElementById("itemForm");
-
-    // Check if all required elements exist before proceeding
-    if (toggleButton && sellingType && accountForm && itemForm) {
-        toggleButton.addEventListener("click", function () {
-            const isAccountVisible = accountForm.style.display !== "none";
-
-            // Change selling type text and button text
-            sellingType.innerText = isAccountVisible ? "In-game item" : "Account";
-            toggleButton.innerText = isAccountVisible
-                ? "Switch to Account"
-                : "Switch to Item";
-
-            // Animate sliding
-            if (isAccountVisible) {
-                accountForm.classList.add("slide-out");
-                itemForm.classList.add("slide-in");
-
-                setTimeout(() => {
-                    accountForm.style.display = "none";
-                    itemForm.style.display = "block";
-                    accountForm.classList.remove("slide-out");
-                    itemForm.classList.remove("slide-in");
-                }, 500);
-            } else {
-                itemForm.classList.add("slide-out");
-                accountForm.classList.add("slide-in");
-
-                setTimeout(() => {
-                    itemForm.style.display = "none";
-                    accountForm.style.display = "block";
-                    itemForm.classList.remove("slide-out");
-                    accountForm.classList.remove("slide-in");
-                }, 500);
-            }
-        });
-    }
-});
-
-
-// add item tab button
-
-document.addEventListener("DOMContentLoaded", function () {
-    const headerElement = document.querySelector(".az-content-header-right");
-
-    // Check if the headerElement exists before proceeding
-    if (headerElement) {
-        function checkWidth() {
-            if (window.innerWidth <= 991) {
-                headerElement.classList.remove("az-content-header-right");
-                headerElement.classList.add("az-content-header-left");
-            } else {
-                headerElement.classList.remove("az-content-header-left");
-                headerElement.classList.add("az-content-header-right");
-            }
-        }
-
-        // Run on initial load
-        checkWidth();
-
-        // Event listener for window resize
-        window.addEventListener("resize", checkWidth);
-    }
-});
-
-
 //-------- For new_item_admin.blade.php --------- //
 // js to handle upload image validation and functions
 let selectedFiles = [];
@@ -140,7 +42,7 @@ function validateImages(input) {
     // Display images in the modal
     displayImagesInModal();
 
-    // If there were invalid files, notify the user
+    // If there were invalid files, notify user
     if (validFiles.length !== newFiles.length) {
         Swal.fire({
             icon: "error",
@@ -286,49 +188,67 @@ function displayImageInModalItem() {
 }
 // validatate item end
 
-// Preloader 1 script
-// window.addEventListener("DOMContentLoaded", function () {
-//     var preloader = document.getElementById("preloader");
+// Button for SWITCH ITEM and ACCOUNTS
 
-//     // Immediately disable scrolling
-//     document.body.classList.add("loading");
-//     document.documentElement.classList.add("loading");
+const toggleButton = document.getElementById("toggleButton");
+const sellingType = document.getElementById("sellingType");
+const accountForm = document.getElementById("accountForm");
+const itemForm = document.getElementById("itemForm");
 
-//     // Show preloader
-//     preloader.style.opacity = "1";
-// });
+// Check if all required elements exist before proceeding
+if (toggleButton && sellingType && accountForm && itemForm) {
+    toggleButton.addEventListener("click", function () {
+        const isAccountVisible = accountForm.style.display !== "none";
 
-// window.addEventListener("load", function () {
-//     var preloader = document.getElementById("preloader");
+        // Change selling type text and button text
+        sellingType.innerText = isAccountVisible ? "In-game item" : "Account";
+        toggleButton.innerText = isAccountVisible
+            ? "Switch to Account"
+            : "Switch to Item";
 
-//     setTimeout(function () {
-//         preloader.style.opacity = "0";
-//         setTimeout(function () {
-//             preloader.style.display = "none";
+        // Animate sliding
+        if (isAccountVisible) {
+            accountForm.classList.add("slide-out");
+            itemForm.classList.add("slide-in");
 
-//             // Re-enable scrolling
-//             document.body.classList.remove("loading");
-//             document.documentElement.classList.remove("loading");
-//         }, 500);
-//     }, 500);
-// });
-
-// preloader 2
-//   Disable scroll while preloader is active
-
-const preloader = document.getElementById("preloader");
-if (preloader) {
-    document.body.classList.add("preloader-active");
-
-    // Hide preloader after page load
-    window.addEventListener("load", function () {
-        setTimeout(function () {
-            preloader.classList.add("hidden"); // Start fade out
-
-            setTimeout(function () {
-                preloader.style.display = "none"; // Hide preloader
-                document.body.classList.remove("preloader-active"); // Enable scroll
+            setTimeout(() => {
+                accountForm.style.display = "none";
+                itemForm.style.display = "block";
+                accountForm.classList.remove("slide-out");
+                itemForm.classList.remove("slide-in");
             }, 500);
-        }, 1000);
+        } else {
+            itemForm.classList.add("slide-out");
+            accountForm.classList.add("slide-in");
+
+            setTimeout(() => {
+                itemForm.style.display = "none";
+                accountForm.style.display = "block";
+                itemForm.classList.remove("slide-out");
+                accountForm.classList.remove("slide-in");
+            }, 500);
+        }
     });
+}
+
+// Responsive switch button
+const headerElement = document.querySelector(".az-content-header-right");
+
+// Check if the headerElement exists before proceeding
+if (headerElement) {
+    function checkWidth() {
+        if (window.innerWidth <= 991) {
+            headerElement.classList.remove("az-content-header-right");
+            headerElement.classList.add("az-content-header-left");
+        } else {
+            headerElement.classList.remove("az-content-header-left");
+            headerElement.classList.add("az-content-header-right");
+        }
+    }
+
+    // Run on initial load
+    checkWidth();
+
+    // Event listener for window resize
+    window.addEventListener("resize", checkWidth);
 }

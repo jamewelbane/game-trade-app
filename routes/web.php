@@ -6,11 +6,12 @@ use App\Http\Controllers\AccountListingController;
 
 Route::get('/dashboard', function () {
     return view('admin.app');
-});
+})->name('dashboard');
 
 Route::get('/add-item', function () {
     return view('admin.pages.new_item_admin');
-});
+})->name('add-item');
+
 
 Route::get('/mystore', function () {
     return view('admin.pages.mystore_admin');

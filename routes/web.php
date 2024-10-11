@@ -29,7 +29,7 @@ Route::get('/mystore/{encryptedValue}', function ($encryptedValue) {
 
         // Check the decrypted value
         if ($value === 'accounts') {
-            return view('admin.pages.mystore_accounts');
+            return view('admin.pages.account_list');
         }
 
     } catch (DecryptException $e) {

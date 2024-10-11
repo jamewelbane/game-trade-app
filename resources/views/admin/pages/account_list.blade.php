@@ -36,6 +36,7 @@
 
             float: left;
             width: 330px;
+            height: 240px;
             margin: 10px;
             padding: 20px;
             border: 1px solid #ccc;
@@ -43,6 +44,11 @@
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
             display: block;
             vertical-align: top;
+            display: flex;
+            /* Allow children to align properly */
+            flex-direction: column;
+            /* Make sure content stacks vertically */
+            justify-content: space-between;
         }
 
 
@@ -75,6 +81,7 @@
         .dropdown {
             margin-bottom: 10px;
         }
+
 
 
         /* searchbar */
@@ -283,8 +290,11 @@
                                         <tr class="card-row">
                                             <td class="card-td">
                                                 <div class="card-account-list">
-                                                    <h3>Valorant</h3>
-                                                    <p>Item details</p>
+                                                    <h3 class="listing-title">Valorant Account For Sale</h3>
+                                                    <p><i class="fas fa-tags"></i> NyZz09Iiwib</p>
+                                                    <p><i class="fas fa-money-bill-wave"></i> $100</p>
+                                                    <p><i class="fas fa-gamepad"></i> Valorant</p>
+
                                                     <button class="btn btn-indigo btn-rounded">View details</button>
                                                 </div>
                                             </td>
@@ -292,8 +302,11 @@
                                         <tr class="card-row">
                                             <td class="card-td">
                                                 <div class="card-account-list">
-                                                    <h3>Clash of clans</h3>
-                                                    <p>Item details</p>
+                                                    <h3 class="listing-title">Max th15 account with skins</h3>
+                                                    <p><i class="fas fa-tags"></i> NyZz09Iiwib</p>
+                                                    <p><i class="fas fa-money-bill-wave"></i> $100</p>
+                                                    <p><i class="fas fa-gamepad"></i> Clash of Clans</p>
+
                                                     <button class="btn btn-indigo btn-rounded">View details</button>
                                                 </div>
                                             </td>
@@ -302,8 +315,10 @@
                                         <tr class="card-row">
                                             <td class="card-td">
                                                 <div class="card-account-list">
-                                                    <h3>One</h3>
-                                                    <p>Item details</p>
+                                                    <h3>BloxFruit With Perma Fruit</h3>
+                                                    <p><i class="fas fa-tags"></i> Ny1511Iiwib</p>
+                                                    <p><i class="fas fa-money-bill-wave"></i> $100</p>
+                                                    <p><i class="fas fa-gamepad"></i> Roblox</p>
                                                     <button class="btn btn-indigo btn-rounded">View details</button>
                                                 </div>
                                             </td>
@@ -312,8 +327,10 @@
                                         <tr class="card-row">
                                             <td class="card-td">
                                                 <div class="card-account-list">
-                                                    <h3>two</h3>
-                                                    <p>Item details</p>
+                                                    <h3>BloxFruit with Leopard</h3>
+                                                    <p><i class="fas fa-tags"></i> NyZz214iwib</p>
+                                                    <p><i class="fas fa-money-bill-wave"></i> $100</p>
+                                                    <p><i class="fas fa-gamepad"></i> Roblox</p>
                                                     <button class="btn btn-indigo btn-rounded">View details</button>
                                                 </div>
                                             </td>
@@ -321,18 +338,10 @@
                                         <tr class="card-row">
                                             <td class="card-td">
                                                 <div class="card-account-list">
-                                                    <h3>three</h3>
-                                                    <p>Item details</p>
-                                                    <button class="btn btn-indigo btn-rounded">View details</button>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr class="card-row">
-                                            <td class="card-td">
-                                                <div class="card-account-list">
-                                                    <h3>four</h3>
-                                                    <p>Item details</p>
+                                                    <h3>LOM EN100 58M Power</h3>
+                                                    <p><i class="fas fa-tags"></i> asg25121</p>
+                                                    <p><i class="fas fa-money-bill-wave"></i> $100</p>
+                                                    <p><i class="fas fa-gamepad"></i> Legend Of Mushroom</p>
                                                     <button class="btn btn-indigo btn-rounded">View details</button>
                                                 </div>
                                             </td>
@@ -341,8 +350,10 @@
                                         <tr class="card-row">
                                             <td class="card-td">
                                                 <div class="card-account-list">
-                                                    <h3>Five</h3>
-                                                    <p>Item details</p>
+                                                    <h3>COC Max th16</h3>
+                                                    <p><i class="fas fa-tags"></i> asa11124</p>
+                                                    <p><i class="fas fa-money-bill-wave"></i> $100</p>
+                                                    <p><i class="fas fa-gamepad"></i> Clash of Clans</p>
                                                     <button class="btn btn-indigo btn-rounded">View details</button>
                                                 </div>
                                             </td>
@@ -351,8 +362,10 @@
                                         <tr class="card-row">
                                             <td class="card-td">
                                                 <div class="card-account-list">
-                                                    <h3>Honey</h3>
-                                                    <p>Item details</p>
+                                                    <h3>Valorant Diamond 22 skins</h3>
+                                                    <p><i class="fas fa-tags"></i> NyZz09Iiwib</p>
+                                                    <p><i class="fas fa-money-bill-wave"></i> $100</p>
+                                                    <p><i class="fas fa-gamepad"></i> Valorant</p>
                                                     <button class="btn btn-indigo btn-rounded">View details</button>
                                                 </div>
                                             </td>
@@ -361,8 +374,10 @@
                                         <tr class="card-row">
                                             <td class="card-td">
                                                 <div class="card-account-list">
-                                                    <h3>Gourd</h3>
-                                                    <p>Item details</p>
+                                                    <h3>GTAV Steam Account</h3>
+                                                    <p><i class="fas fa-tags"></i> 1srsa314</p>
+                                                    <p><i class="fas fa-money-bill-wave"></i> $100</p>
+                                                    <p><i class="fas fa-gamepad"></i> GTAV</p>
                                                     <button class="btn btn-indigo btn-rounded">View details</button>
                                                 </div>
                                             </td>
@@ -371,8 +386,10 @@
                                         <tr class="card-row">
                                             <td class="card-td">
                                                 <div class="card-account-list">
-                                                    <h3>Cheese</h3>
-                                                    <p>Item details</p>
+                                                    <h3>Albion good stats</h3>
+                                                    <p><i class="fas fa-tags"></i> wafs112</p>
+                                                    <p><i class="fas fa-money-bill-wave"></i> $100</p>
+                                                    <p><i class="fas fa-gamepad"></i> Albion Online</p>
                                                     <button class="btn btn-indigo btn-rounded">View details</button>
                                                 </div>
                                             </td>
@@ -381,8 +398,22 @@
                                         <tr class="card-row">
                                             <td class="card-td">
                                                 <div class="card-account-list">
-                                                    <h3>Cake</h3>
-                                                    <p>Item details</p>
+                                                    <h3>Ran account Good stats</h3>
+                                                    <p><i class="fas fa-tags"></i> Swe2425</p>
+                                                    <p><i class="fas fa-money-bill-wave"></i> $100</p>
+                                                    <p><i class="fas fa-gamepad"></i> RAN Online</p>
+                                                    <button class="btn btn-indigo btn-rounded">View details</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="card-row">
+                                            <td class="card-td">
+                                                <div class="card-account-list">
+                                                    <h3>Ark Survival Evolved Account</h3>
+                                                    <p><i class="fas fa-tags"></i> RTsf15</p>
+                                                    <p><i class="fas fa-money-bill-wave"></i> $100</p>
+                                                    <p><i class="fas fa-gamepad"></i> Ark: Survival Evolved</p>
                                                     <button class="btn btn-indigo btn-rounded">View details</button>
                                                 </div>
                                             </td>
@@ -471,7 +502,33 @@
 
         console.log(`Width: ${divWidth}px, Height: ${divHeight}px`);
     </script>
+    <script>
+        $(document).ready(function() {
+            // Function to equalize card heights
+            function equalizeCardHeights() {
+                let maxHeight = 0;
 
+                // Reset heights
+                $('.card-account-list').css('height', 'auto');
+
+                // Find the tallest card
+                $('.card-account-list').each(function() {
+                    const cardHeight = $(this).outerHeight();
+                    if (cardHeight > maxHeight) {
+                        maxHeight = cardHeight;
+                    }
+                });
+
+                // Set all cards to the tallest height
+                $('.card-account-list').css('height', maxHeight + 'px');
+            }
+
+            equalizeCardHeights();
+
+            // Recalculate on window resize
+            $(window).resize(equalizeCardHeights);
+        });
+    </script>
 
 </body>
 

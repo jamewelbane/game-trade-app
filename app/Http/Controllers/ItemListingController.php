@@ -15,10 +15,11 @@ class ItemListingController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|numeric|min:0',
+            'negotiable' => 'required|boolean',
             'game' => 'required|string',
             'type' => 'required|string',
             'images' => 'required|max:1',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validate each image
+            'images.*' => 'image|mimes:jpeg,png,jpg|max:1024', // Validate each image
         ]);
     
         // Get the user ID or use a default value
@@ -29,6 +30,7 @@ class ItemListingController extends Controller
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'price' => $request->input('price'),
+            'negotiable' => $request->input('negotiable'),
             'game' => $request->input('game'),
             'type' => $request->input('type'),
             'user_id' => $userId, 

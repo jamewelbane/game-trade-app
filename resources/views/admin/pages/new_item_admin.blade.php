@@ -20,7 +20,8 @@
 </head>
 
 
-@if (session('success'))
+
+@if (session('success') || $errors->has('images.*'))
 @else
     <!-- Preloader overlay -->
     {{-- <div class="overlay" id="preloader"> 
@@ -39,9 +40,6 @@
 
 
 <body>
-
-
-
     {{-- Navigation bar --}}
     @include('admin.components.nav_admin')
 
@@ -58,7 +56,8 @@
 
                                         <div>
                                             <h6 class="card-title">New Listing</h6>
-                                            <p class="card-text">Please note that only images with up to 2MB are allowed
+                                            <p class="card-text">Please note that only images with up to 1MB or 1024KB
+                                                are allowed
                                             </p>
                                         </div>
                                         <div class="az-content-header-right">
@@ -89,7 +88,6 @@
             </div>
         </div>
     </div>
-
     </div><!-- az-content -->
 
 
@@ -99,8 +97,19 @@
     {{-- js include --}}
     @include('admin.components.js_inc_admin')
 
+
+
     {{-- Modal include --}}
     @include('admin.components.modals_admin')
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            activateNavItem('sell');
+            activateNavItem('add-listing');
+        });
+    </script>
 
     <script>
         @if (session('success'))
@@ -112,12 +121,51 @@
     </script>
 
     <script>
+        @if ($errors->has('images.*'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: "Image must not exceed 1024 KB",
+                showConfirmButton: true,
+            });
+        @endif
+    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script>
         document.addEventListener("DOMContentLoaded", function() {
-            activateNavItem('sell');
-            activateNavItem('add-listing');
+            // Check localStorage for the last active form
+            const lastActiveForm = localStorage.getItem('activeForm');
+
+            if (lastActiveForm) {
+                // Hide both forms
+                document.getElementById('accountForm').style.display = 'none';
+                document.getElementById('itemForm').style.display = 'none';
+
+                // Show the last active form
+                document.getElementById(lastActiveForm).style.display = 'block';
+            }
+
+            // Event listeners for switching forms
+            document.getElementById('toggleButton').addEventListener('click', function() {
+                const accountForm = document.getElementById('accountForm');
+                const itemForm = document.getElementById('itemForm');
+
+                // Toggle visibility
+                if (accountForm.style.display === 'none') {
+                    accountForm.style.display = 'block';
+                    itemForm.style.display = 'none';
+                    localStorage.setItem('activeForm', 'accountForm'); // Store active form
+                } else {
+                    accountForm.style.display = 'none';
+                    itemForm.style.display = 'block';
+                    localStorage.setItem('activeForm', 'itemForm'); // Store active form
+                }
+            });
         });
     </script>
-
 
 </body>
 

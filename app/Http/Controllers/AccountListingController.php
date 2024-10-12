@@ -17,12 +17,13 @@ class AccountListingController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|numeric|min:0',
+            'negotiable' => 'required|boolean',
             'game' => 'required|string',
             'usage' => 'required|string',
             'type' => 'required|string',
             'platform' => 'required|string',
             'images' => 'required|array|max:5', // Maximum of 5 images
-            'images.*' => 'image|mimes:jpeg,png,jpg|max:2048', // Validate each image
+            'images.*' => 'image|mimes:jpeg,png,jpg|max:1024', // Validate each image
         ]);
 
         // Get the user ID or use a default value
@@ -33,6 +34,7 @@ class AccountListingController extends Controller
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'price' => $request->input('price'),
+            'negotiable' => $request->input('negotiable'),
             'game' => $request->input('game'),
             'usage' => $request->input('usage'),
             'type' => $request->input('type'),
@@ -49,6 +51,6 @@ class AccountListingController extends Controller
         }
 
         // After successful creation
-        return redirect('/add-item')->with('success', 'Listing created successfully');
+        return redirect('/add-item')->with('success', 'Account listing created successfully');
     }
 }

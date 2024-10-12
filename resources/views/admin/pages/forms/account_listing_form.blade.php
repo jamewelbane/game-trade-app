@@ -11,7 +11,8 @@
                 <textarea rows="3" name="description" class="form-control" placeholder="Description"></textarea>
             </div>
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-4">
+
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">₱</span>
@@ -21,6 +22,16 @@
                         <div class="input-group-append">
                             <span class="input-group-text">.00</span>
                         </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="input-group mb-3">
+                        <select name="negotiable" class="form-control select2">
+                            <option label="Is this negotiable?"></option>
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
                     </div>
                 </div>
 
@@ -39,12 +50,14 @@
                             </button>
                         </div>
                         <input type="hidden" id="selectedFilesInputAccount" name="selectedFiles[]" multiple>
+                        @error('images.*')
+                            <span class="text-danger">One of your image exceed the size limit of 1024 KB</span>
+                        @enderror
                     </div>
+
                 </div>
-
-
-
             </div>
+
             <div class="row row-sm mg-b-20">
                 <div class="col-lg-3 mg-t-20 mg-lg-t-0">
                     <p class="mg-b-10">Game</p>

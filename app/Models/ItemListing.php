@@ -13,6 +13,7 @@ class ItemListing extends Model
         'title',
         'description',
         'price',
+        'negotiable',
         'game',
         'type',
         'user_id',

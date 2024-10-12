@@ -14,6 +14,7 @@ class AccountListing extends Model
         'title',
         'description',
         'price',
+        'negotiable',
         'game',
         'usage',
         'type',

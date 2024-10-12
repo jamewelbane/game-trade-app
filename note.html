@@ -1,10 +1,8 @@
-   
-   
-       {{-- @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif --}}
+{{-- @if (session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif --}}
    
    
    // SWAL standard fire
@@ -18,6 +16,16 @@
         //     });
         // @endif
 
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     
     Swal toast
         @if (session('success'))
@@ -29,8 +37,6 @@
 
 
         preload
-
-
 <style>
           body.loading,
     html.loading {
@@ -67,18 +73,14 @@
       transition: opacity 0.5s ease;
       pointer-events: none;
     }
-    </style>
-
-
+</style>
 <!-- Preloader overlay -->
 <div class="overlay" id="preloader">
     <l-quantum size="100" speed="1.75" color="#3366ff"></l-quantum>
-  </div>
-        
-      <!-- l-quantum script -->
-      <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/quantum.js"></script>
-
-        <script>
+</div>
+<!-- l-quantum script -->
+<script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/quantum.js"></script>
+<script>
     window.addEventListener('DOMContentLoaded', function() {
     var preloader = document.getElementById('preloader');
 
@@ -105,3 +107,24 @@
     }, 500);
   });
 </script>
+<!-- Alter table add new column -->
+public function up()
+    {
+        Schema::table('your_table_name', function (Blueprint $table) {
+            $table->string('new_column_name')->after('existing_column_name');
+        });
+    }
+
+    {
+        Schema::table('your_table_name', function (Blueprint $table) {
+            $table->dropColumn('new_column_name');
+        });
+    }
+<!-- drop column -->
+Schema::table('your_table_name', function (Blueprint $table) {
+            $table->string('new_column_name')->after('existing_column_name');
+        });
+
+        Schema::table('your_table_name', function (Blueprint $table) {
+            $table->string('column_name_to_drop'); // Adjust the column type as needed
+        });

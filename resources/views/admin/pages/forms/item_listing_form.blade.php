@@ -1,15 +1,7 @@
 <form action="{{ route('item_listings.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div id="itemForm" class="form-container" style="display: none;">
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        
         <div style="margin: 10px">
             <div class="form-group">
                 <label>Title | Item</label>
@@ -28,7 +20,7 @@
                 @enderror
             </div>
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-4">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">₱</span>
@@ -43,6 +35,17 @@
                         @enderror
                     </div>
                 </div>
+
+                <div class="col-md-4">
+                    <div class="input-group mb-3">
+                        <select name="negotiable" class="form-control select2">
+                            <option label="Is this negotiable?"></option>
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div class="col-md-4 position-relative">
                     <div class="input-group mb-3">
                         <div class="custom-file">
@@ -59,7 +62,7 @@
                         </div>
                         <input type="hidden" id="selectedFilesInputItem" name="selectedFiles[]" multiple>
                         @error('images.*')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                            <span class="text-danger">One of your image exceed the size limit of 1024 KB</span>
                         @enderror
                     </div>
                 </div>

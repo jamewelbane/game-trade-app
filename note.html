@@ -107,6 +107,8 @@
     }, 500);
   });
 </script>
+
+
 <!-- Alter table add new column -->
 public function up()
     {
@@ -115,16 +117,35 @@ public function up()
         });
     }
 
-    {
-        Schema::table('your_table_name', function (Blueprint $table) {
+
+<!-- drop column -->
+
+Schema::table('your_table_name', function (Blueprint $table) {
             $table->dropColumn('new_column_name');
         });
-    }
-<!-- drop column -->
-Schema::table('your_table_name', function (Blueprint $table) {
-            $table->string('new_column_name')->after('existing_column_name');
-        });
 
-        Schema::table('your_table_name', function (Blueprint $table) {
-            $table->string('column_name_to_drop'); // Adjust the column type as needed
+
+
+
+        public function up(): void
+    {
+        Schema::table('account_listings', function (Blueprint $table) {
+            $table->string('listing_id')->after('id')->unique();
         });
+        Schema::table('item_listings', function (Blueprint $table) {
+            $table->string('listing_id')->after('id')->unique();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::table('account_listings', function (Blueprint $table) {
+            $table->dropColumn('listing_id');
+        });
+        Schema::table('item_listings', function (Blueprint $table) {
+            $table->dropColumn('listing_id');
+        });
+    }

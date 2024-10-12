@@ -12,6 +12,7 @@ class AccountListingImage extends Model
     protected $fillable = ['listing_id', 'image_path'];
 
 
+
     public function listing()
     {
         return $this->belongsTo(AccountListing::class, 'listing_id'); // Correctly reference 'listing_id'

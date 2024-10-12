@@ -134,38 +134,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Check localStorage for the last active form
-            const lastActiveForm = localStorage.getItem('activeForm');
-
-            if (lastActiveForm) {
-                // Hide both forms
-                document.getElementById('accountForm').style.display = 'none';
-                document.getElementById('itemForm').style.display = 'none';
-
-                // Show the last active form
-                document.getElementById(lastActiveForm).style.display = 'block';
-            }
-
-            // Event listeners for switching forms
-            document.getElementById('toggleButton').addEventListener('click', function() {
-                const accountForm = document.getElementById('accountForm');
-                const itemForm = document.getElementById('itemForm');
-
-                // Toggle visibility
-                if (accountForm.style.display === 'none') {
-                    accountForm.style.display = 'block';
-                    itemForm.style.display = 'none';
-                    localStorage.setItem('activeForm', 'accountForm'); // Store active form
-                } else {
-                    accountForm.style.display = 'none';
-                    itemForm.style.display = 'block';
-                    localStorage.setItem('activeForm', 'itemForm'); // Store active form
-                }
-            });
-        });
-    </script>
 
 </body>
 

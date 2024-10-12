@@ -58,7 +58,7 @@ class ItemListingController extends Controller
         }
     
       // After successful creation
-        return redirect('/add-item')->with('success', 'Item listing created successfully');
+        return redirect('/new-listing-item')->with('success', 'Item listing created successfully');
     }
 
 

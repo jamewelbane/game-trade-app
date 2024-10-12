@@ -114,19 +114,7 @@
 
 @if (session('success'))
 @else
-    <!-- Preloader overlay -->
-    {{-- <div class="overlay" id="preloader">
-        <l-quantum size="100" speed="1.75" color="#3366ff"></l-quantum>
-    </div> --}}
-
-    <div id="preloader">
-        <div class="loading-wave">
-            <div class="loading-bar"></div>
-            <div class="loading-bar"></div>
-            <div class="loading-bar"></div>
-            <div class="loading-bar"></div>
-        </div>
-    </div>
+    @include('admin.layouts.preloader')
 @endif
 
 
@@ -134,10 +122,10 @@
 <body>
 
     @php
-    // Encrypt the string you want to use in the URL
-    $urlAccountList = Crypt::encrypt('accounts');
-    $urlItemsList = Crypt::encrypt('items-coins');
-    $urlServicesList = Crypt::encrypt('services');
+        // Encrypt the string you want to use in the URL
+        $urlAccountList = Crypt::encrypt('accounts');
+        $urlItemsList = Crypt::encrypt('items-coins');
+        $urlServicesList = Crypt::encrypt('services');
     @endphp
 
     {{-- Navigation bar --}}

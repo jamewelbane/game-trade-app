@@ -22,4 +22,6 @@
  <!-- l-quantum script -->
  <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/quantum.js" defer></script>
 
+ <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/waveform.js"></script>
+
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>

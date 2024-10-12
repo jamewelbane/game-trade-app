@@ -16,15 +16,7 @@
 
 @if (session('success'))
 @else
-    <!-- Preloader overlay -->
-    <div id="preloader">
-        <div class="loading-wave">
-            <div class="loading-bar"></div>
-            <div class="loading-bar"></div>
-            <div class="loading-bar"></div>
-            <div class="loading-bar"></div>
-        </div>
-    </div>
+    @include('admin.layouts.preloader')
 @endif
 
 <body>
@@ -56,7 +48,7 @@
                                 </div>
                             </div>
 
-                            
+
 
                             <div class="container-search-bar">
                                 <input checked="" class="checkbox" type="checkbox">
@@ -251,10 +243,10 @@
         @endif
     </script>
 
-  
 
 
-   
+
+
 
 
 

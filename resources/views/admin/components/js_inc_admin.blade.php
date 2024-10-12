@@ -1,5 +1,5 @@
 <!-- Preloader Script - Load early -->
-<script src="../js/custom/preloader.js"></script>
+<script src="../js/custom/preloader.js" async></script>
 
 <!-- Load core libraries -->
 <script src="../lib/jquery/jquery.min.js"></script>
@@ -28,8 +28,12 @@
     <script src="{{ asset('js/dashboard.sampledata.js') }}" defer></script>
 @endif
 
-@if (Route::currentRouteName() == 'add-item')
+{{-- @if (Route::currentRouteName() == 'add-item')
     <script src="{{ asset('js/custom/new_item_admin.js') }}" defer></script>
+@endif --}}
+
+@if (Route::currentRouteName() == 'new-listing-account' || Route::currentRouteName() == 'new-listing-item')
+    <script src="{{ asset('js/custom/create_account_item.js') }}" defer></script>
 @endif
 
 @if (Route::currentRouteName() == 'account-listing-table')

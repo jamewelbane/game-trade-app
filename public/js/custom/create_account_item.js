@@ -191,45 +191,9 @@ function displayImageInModalItem() {
 // Button for SWITCH ITEM and ACCOUNTS
 
 const toggleButton = document.getElementById("toggleButton");
-const sellingType = document.getElementById("sellingType");
-const accountForm = document.getElementById("accountForm");
-const itemForm = document.getElementById("itemForm");
 
-// Check if all required elements exist before proceeding
-if (toggleButton && sellingType && accountForm && itemForm) {
-    toggleButton.addEventListener("click", function () {
-        const isAccountVisible = accountForm.style.display !== "none";
 
-        // Change selling type text and button text
-        sellingType.innerText = isAccountVisible ? "In-game item" : "Account";
-        toggleButton.innerText = isAccountVisible
-            ? "Switch to Account"
-            : "Switch to Item";
 
-        // Animate sliding
-        if (isAccountVisible) {
-            accountForm.classList.add("slide-out");
-            itemForm.classList.add("slide-in");
-
-            setTimeout(() => {
-                accountForm.style.display = "none";
-                itemForm.style.display = "block";
-                accountForm.classList.remove("slide-out");
-                itemForm.classList.remove("slide-in");
-            }, 500);
-        } else {
-            itemForm.classList.add("slide-out");
-            accountForm.classList.add("slide-in");
-
-            setTimeout(() => {
-                itemForm.style.display = "none";
-                accountForm.style.display = "block";
-                itemForm.classList.remove("slide-out");
-                accountForm.classList.remove("slide-in");
-            }, 500);
-        }
-    });
-}
 
 // Responsive switch button
 const headerElement = document.querySelector(".az-content-header-right");

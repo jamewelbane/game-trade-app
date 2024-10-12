@@ -65,7 +65,7 @@ class AccountListingController extends Controller
 
 
         // After successful creation
-        return redirect('/add-item')->with('success', 'Account listing created successfully');
+        return redirect('/new-listing-account')->with('success', 'Account listing created successfully');
     }
 
     /**

@@ -21,20 +21,19 @@
 
 
 @if (session('success'))
- 
 @else
     <!-- Preloader overlay -->
-    {{-- <div class="overlay" id="preloader">
+    {{-- <div class="overlay" id="preloader"> 
         <l-quantum size="100" speed="1.75" color="#3366ff"></l-quantum>
     </div> --}}
     <div id="preloader">
         <div class="loading-wave">
-          <div class="loading-bar"></div>
-          <div class="loading-bar"></div>
-          <div class="loading-bar"></div>
-          <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
         </div>
-      </div>
+    </div>
 @endif
 
 
@@ -76,10 +75,10 @@
                                     <div class="card-body" id="formContainer">
 
                                         {{-- Account listing form --}}
-                                        @include('admin.pages.forms.account_listing_admin')
+                                        @include('admin.pages.forms.account_listing_form')
 
                                         {{-- Item listing form --}}
-                                        @include('admin.pages.forms.item_listing_admin')
+                                        @include('admin.pages.forms.item_listing_form')
 
                                     </div><!-- card-body -->
                                 </div><!-- card -->
@@ -92,8 +91,6 @@
     </div>
 
     </div><!-- az-content -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 
 
     {{-- footer --}}

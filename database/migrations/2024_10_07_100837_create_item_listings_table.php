@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('item_listings', function (Blueprint $table) {
             $table->id();
+            $table->string('listing_id')->unique();
             $table->string('title'); // Title of the listing
             $table->text('description'); // Description of the account
             $table->decimal('price', 10, 2); // Price of the account
+            $table->boolean('negotiable')->default(0);
             $table->string('game'); // The game the account is for
             $table->string('type'); // Type of account (whale, light spender, etc.)
             $table->unsignedBigInteger('user_id'); // Reference to the user who is selling

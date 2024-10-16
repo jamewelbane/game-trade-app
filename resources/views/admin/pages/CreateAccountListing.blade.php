@@ -20,28 +20,15 @@
 </head>
 
 
-@if (session('success'))
+
+@if (session('success') || $errors->has('images.*'))
 @else
-    <!-- Preloader overlay -->
-    {{-- <div class="overlay" id="preloader"> 
-        <l-quantum size="100" speed="1.75" color="#3366ff"></l-quantum>
-    </div> --}}
-    <div id="preloader">
-        <div class="loading-wave">
-            <div class="loading-bar"></div>
-            <div class="loading-bar"></div>
-            <div class="loading-bar"></div>
-            <div class="loading-bar"></div>
-        </div>
-    </div>
+    @include('admin.layouts.preloader')
 @endif
 
 
 
 <body>
-
-
-
     {{-- Navigation bar --}}
     @include('admin.components.nav_admin')
 
@@ -51,34 +38,35 @@
                 <div class="row row-sm mg-b-20">
                     <div class="col-lg-12 mg-t-20 mg-lg-t-0">
                         <div class="row row-sm">
-
+                            
                             <div class="col-sm-12 mg-t-20">
                                 <div class="card card-dashboard-one">
                                     <div class="card-header">
-
+                                        
                                         <div>
-                                            <h6 class="card-title">New Listing</h6>
-                                            <p class="card-text">Please note that only images with up to 2MB are allowed
+                                            <h6 class="card-title">Create Account Listing</h6>
+                                            <p class="card-text">Please note that only images with up to 1024 KB
+                                                are allowed
                                             </p>
                                         </div>
                                         <div class="az-content-header-right">
                                             <div class="media">
                                                 <div class="media-body">
                                                     <label>Selling Type</label>
-                                                    <h6 id="sellingType">Account</h6>
+                                                    <h6>Account</h6>
                                                 </div>
                                             </div>
-                                            <button id="toggleButton" class="btn btn-purple">Switch to Item</button>
+                                            <button id="toggleButton" onclick="window.location.href='/new-listing-item'"
+                                                class="btn btn-purple">Switch to Item</button>
                                         </div>
                                     </div>
 
                                     <div class="card-body" id="formContainer">
 
+
                                         {{-- Account listing form --}}
                                         @include('admin.pages.forms.account_listing_form')
 
-                                        {{-- Item listing form --}}
-                                        @include('admin.pages.forms.item_listing_form')
 
                                     </div><!-- card-body -->
                                 </div><!-- card -->
@@ -89,7 +77,6 @@
             </div>
         </div>
     </div>
-
     </div><!-- az-content -->
 
 
@@ -99,8 +86,19 @@
     {{-- js include --}}
     @include('admin.components.js_inc_admin')
 
+
+
     {{-- Modal include --}}
     @include('admin.components.modals_admin')
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            activateNavItem('sell');
+            activateNavItem('add-listing');
+        });
+    </script>
 
     <script>
         @if (session('success'))
@@ -112,11 +110,18 @@
     </script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            activateNavItem('sell');
-            activateNavItem('add-listing');
-        });
+        @if ($errors->has('images.*'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: "Image must not exceed 1024 KB",
+                showConfirmButton: true,
+            });
+        @endif
     </script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 
 
 </body>

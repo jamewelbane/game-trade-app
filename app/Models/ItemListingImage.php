@@ -12,8 +12,8 @@ class ItemListingImage extends Model
     protected $fillable = ['listing_id', 'image_path'];
 
     // ListingImage.php
- public function listing()
- {
-     return $this->belongsTo(ItemListing::class, 'listing_id'); 
- }
+    public function listing()
+    {
+        return $this->belongsTo(ItemListing::class, 'listing_id'); // Correctly reference 'listing_id'
+    }
 }

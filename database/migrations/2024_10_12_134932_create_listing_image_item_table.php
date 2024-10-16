@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('account_listing_images', function (Blueprint $table) {
+        Schema::create('item_listing_images', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('listing_id'); // Reference to the listing
+            $table->string('listing_id'); // Reference to the listing
             $table->string('image_path'); // Path to the uploaded image
             $table->timestamps();
 
             // Foreign key constraint
-            $table->foreign('listing_id')->references('id')->on('account_listings')->onDelete('cascade');
+            $table->foreign('listing_id')->references('listing_id')->on('item_listings')->onDelete('cascade');
         });
     }
 
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('account_listing_images');
+        Schema::dropIfExists('item_listing_images');
     }
 };

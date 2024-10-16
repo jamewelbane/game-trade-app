@@ -11,22 +11,21 @@ class AccountListing extends Model
     use HasFactory;
 
     protected $fillable = [
+        'listing_id', 
         'title',
         'description',
         'price',
+        'negotiable',
         'game',
         'usage',
         'type',
         'platform',
         'user_id',
+        
     ];
 
-
-   // AccountListing.php
-public function images()
-{
-    return $this->hasMany(AccountListingImage::class, 'listing_id'); // Correctly reference 'listing_id'
-}
-
-
+    public function images()
+    {
+        return $this->hasMany(AccountListingImage::class, 'listing_id', 'listing_id');
+    }
 }

@@ -16,7 +16,7 @@
                 <li class="nav-item sell">
                     <a href="" class="nav-link with-sub"><i class="fas fa-tags"></i>&nbsp Sell</a>
                     <nav class="az-menu-sub">
-                        <a href="/add-item" class="nav-link add-listing">Account & Item</a>
+                        <a href="/new-listing-account" class="nav-link add-listing">Account & Item</a>
                         <a href="/add-item" class="nav-link add-listing">Services</a>
 
                     </nav>

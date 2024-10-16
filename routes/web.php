@@ -14,6 +14,14 @@ Route::get('/add-item', function () {
     return view('admin.pages.new_item_admin');
 })->name('add-item');
 
+Route::get('/new-listing-account', function () {
+    return view('admin.pages.CreateAccountListing');
+})->name('new-listing-account');
+
+Route::get('/new-listing-item', function () {
+    return view('admin.pages.CreateItemListing');
+})->name('new-listing-item');
+
 
 Route::get('/mystore', function () {
     
@@ -29,7 +37,7 @@ Route::get('/mystore/{encryptedValue}', function ($encryptedValue) {
 
         // Check the decrypted value
         if ($value === 'accounts') {
-            return view('admin.pages.account_list');
+            return view('admin.pages.mystore_accounts');
         }
 
     } catch (DecryptException $e) {

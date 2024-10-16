@@ -1,4 +1,4 @@
-// navigation active show
+// ------ navigation active show ------ //
 function activateNavItem(pageClass) {
     const navItem = document.querySelector(`.nav-item.${pageClass}`);
     const navLink = document.querySelector(`.nav-link.${pageClass}`);
@@ -11,6 +11,8 @@ function activateNavItem(pageClass) {
         navLink.classList.add("active", "show");
     }
 }
+
+// ------ navigation active show END ------ //
 
 // ------ Sweetalert ------ //
 const Toast = Swal.mixin({
@@ -26,8 +28,15 @@ const Toast = Swal.mixin({
 });
 
 
+// ------ Sweetalert END ------ //
 
 
+// ------ Get element size ------ //
+// const myDiv = document.getElementById("account-list-table");
 
+// // Get the width and height in pixels
+// const divWidth = myDiv.clientWidth; // Includes padding, but not border or margin
+// const divHeight = myDiv.clientHeight; // Includes padding, but not border or margin
 
-
+// console.log(`Width: ${divWidth}px, Height: ${divHeight}px`);
+// ------ Get element size END ------ //

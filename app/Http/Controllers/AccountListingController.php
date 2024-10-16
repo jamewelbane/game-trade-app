@@ -17,10 +17,10 @@ class AccountListingController extends Controller
             'description' => 'required|string',
             'price' => 'required|numeric|min:0',
             'negotiable' => 'required|boolean',
-            'game' => 'required|string',
-            'usage' => 'required|string',
-            'type' => 'required|string',
-            'platform' => 'required|string',
+            'game' => 'required|string|exists:games,id',
+            'usage' => 'required|string|exists:account_uses,id',
+            'type' => 'required|string|exists:account_types,id',
+            'platform' => 'required|string|exists:platforms,id',
             'images' => 'required|array|max:5', // Maximum of 5 images
             'images.*' => 'image|mimes:jpeg,png,jpg|max:1024', // Validate each image
         ]);

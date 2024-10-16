@@ -81,11 +81,10 @@
                 <div class="col-lg-6 mg-t-20 mg-lg-t-0">
                     <p class="mg-b-10">Game</p>
                     <select name="game" class="form-control select2 @error('game') is-invalid @enderror" required>
-                        <option label="Choose one" {{ old('game') == null ? 'selected' : '' }}></option>
-                        <option value="Valorant" {{ old('game') == 'Valorant' ? 'selected' : '' }}>Valorant</option>
-                        <option value="Roblox" {{ old('game') == 'Roblox' ? 'selected' : '' }}>Roblox</option>
-                        <option value="Clash of Clans" {{ old('game') == 'Clash of Clans' ? 'selected' : '' }}>Clash of Clans</option>
-                        <option value="Mobile Legends" {{ old('game') == 'Mobile Legends' ? 'selected' : '' }}>Mobile Legends</option>
+                        <option label="Choose one"></option>
+                        @foreach($games as $id => $name)
+                            <option value="{{ $id }}" {{ old('game') == $id ? 'selected' : '' }}>{{ $name }}</option>
+                        @endforeach
                     </select>
                     @error('game')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -94,9 +93,10 @@
                 <div class="col-lg-6">
                     <p class="mg-b-10">Type</p>
                     <select name="type" class="form-control select2-no-search @error('type') is-invalid @enderror" required>
-                        <option label="Choose one" {{ old('type') == null ? 'selected' : '' }}></option>
-                        <option value="In-game item" {{ old('type') == 'In-game item' ? 'selected' : '' }}>Item</option>
-                        <option value="In-game currency" {{ old('type') == 'In-game currency' ? 'selected' : '' }}>Coins | Currency</option>
+                        <option label="Choose one"></option>
+                        @foreach($itemTypes as $id => $name)
+                            <option value="{{ $id }}" {{ old('type') == $id ? 'selected' : '' }}>{{ $name }}</option>
+                        @endforeach
                     </select>
                     @error('type')
                         <div class="invalid-feedback">{{ $message }}</div>

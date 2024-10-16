@@ -17,8 +17,8 @@ class ItemListingController extends Controller
             'description' => 'required|string',
             'price' => 'required|numeric|min:0',
             'negotiable' => 'required|boolean',
-            'game' => 'required|string',
-            'type' => 'required|string',
+            'game' => 'required|string|exists:games,id',
+            'type' => 'required|string|exists:item_types,id',
             'images' => 'required|max:1',
             'images.*' => 'image|mimes:jpeg,png,jpg|max:1024', // Validate each image
         ]);

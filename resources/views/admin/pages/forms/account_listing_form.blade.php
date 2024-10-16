@@ -86,26 +86,22 @@
                     <p class="mg-b-10">Game</p>
                     <select name="game" class="form-control select2 @error('game') is-invalid @enderror" required>
                         <option label="Choose one"></option>
-                        <option value="Valorant" {{ old('game') == 'Valorant' ? 'selected' : '' }}>Valorant</option>
-                        <option value="Roblox" {{ old('game') == 'Roblox' ? 'selected' : '' }}>Roblox</option>
-                        <option value="Clash of Clans" {{ old('game') == 'Clash of Clans' ? 'selected' : '' }}>Clash of
-                            Clans</option>
-                        <option value="Mobile Legends" {{ old('game') == 'Mobile Legends' ? 'selected' : '' }}>Mobile
-                            Legends</option>
+                        @foreach($games as $id => $name)
+                            <option value="{{ $id }}" {{ old('game') == $id ? 'selected' : '' }}>{{ $name }}</option>
+                        @endforeach
                     </select>
+
                     @error('game')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="col-lg-3">
                     <p class="mg-b-10">Use</p>
-                    <select name="usage" class="form-control select2-no-search @error('usage') is-invalid @enderror"
-                        required>
+                    <select name="usage" class="form-control select2-no-search @error('usage') is-invalid @enderror" required>
                         <option label="Choose one"></option>
-                        <option value="Good for Main" {{ old('usage') == 'Good for Main' ? 'selected' : '' }}>Good for
-                            Main</option>
-                        <option value="Good for Smurf" {{ old('usage') == 'Good for Smurf' ? 'selected' : '' }}>Good
-                            for Smurf</option>
+                        @foreach($account_uses as $id => $name)
+                            <option value="{{ $id }}" {{ old('usage') == $id ? 'selected' : '' }}>{{ $name }}</option>
+                        @endforeach
                     </select>
                     @error('usage')
                         <span class="text-danger">{{ $message }}</span>
@@ -113,17 +109,11 @@
                 </div>
                 <div class="col-lg-3">
                     <p class="mg-b-10">Type</p>
-                    <select name="type" class="form-control select2-no-search @error('type') is-invalid @enderror"
-                        required>
+                    <select name="type" class="form-control select2-no-search @error('type') is-invalid @enderror" required>
                         <option label="Choose one"></option>
-                        <option value="Heavy spender | Whale"
-                            {{ old('type') == 'Heavy spender | Whale' ? 'selected' : '' }}>Heavy spender | Whale
-                        </option>
-                        <option value="Light spender" {{ old('type') == 'Light spender' ? 'selected' : '' }}>Light
-                            spender</option>
-                        <option value="Free to Play" {{ old('type') == 'Free to Play' ? 'selected' : '' }}>Free to
-                            Play
-                        </option>
+                        @foreach($accountTypes as $id => $name)
+                            <option value="{{ $id }}" {{ old('type') == $id ? 'selected' : '' }}>{{ $name }}</option>
+                        @endforeach
                     </select>
                     @error('type')
                         <span class="text-danger">{{ $message }}</span>
@@ -134,11 +124,9 @@
                     <select name="platform"
                         class="form-control select2-no-search @error('platform') is-invalid @enderror" required>
                         <option label="Choose one"></option>
-                        <option value="Desktop" {{ old('platform') == 'Desktop' ? 'selected' : '' }}>Desktop</option>
-                        <option value="Mobile" {{ old('platform') == 'Mobile' ? 'selected' : '' }}>Mobile</option>
-                        <option value="Both | Cross-platform"
-                            {{ old('platform') == 'Both | Cross-platform' ? 'selected' : '' }}>Both | Cross-platform
-                        </option>
+                        @foreach($platforms as $id => $name)
+                            <option value="{{ $id }}" {{ old('type') == $id ? 'selected' : '' }}>{{ $name }}</option>
+                        @endforeach
                     </select>
                     @error('platform')
                         <span class="text-danger">{{ $message }}</span>
